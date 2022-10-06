@@ -23,7 +23,7 @@ window.addEventListener("load", function(){
             this.height = Math.random() * 100;
 
 
-            this.color = colorList[Math.random() >= 0.5 ? 1 : 0]
+            this.color = colorList[Math.random() >= 0.5 ? 1 : 0];
 
 
             // this.lineHeight = this.height + Math.random() * 50;
@@ -46,8 +46,14 @@ window.addEventListener("load", function(){
 
         draw(context) {
             this.reverse ? this.opacity -= 0.01 : this.opacity += 0.01;
-            context.setFillColor(this.color, this.opacity);
-
+            // context.setFillColor(this.color, this.opacity);
+            if (this.color == "red") {
+                this.rgbaCode = `rgba(255, 0, 0, ${this.opacity})`;
+            } else if (this.color == "green") {
+                this.rgbaCode = `rgba(0, 255, 0, ${this.opacity})`;
+            }
+            context.fillStyle = this.rgbaCode;
+            
             context.fillRect(this.upLineX, this.upLineY, 2, this.upLineHeight);
             context.fillRect(this.downLineX, this.downLineY, 2, this.downLineHeight);
             context.fillRect(this.x, this.y, this.width, this.height);
