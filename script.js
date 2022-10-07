@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
 
     console.log(mainCtx);
 
-    class Rect{
+    class Candle{
         constructor(effect) {
             this.effect = effect;
             //Position
@@ -70,26 +70,26 @@ window.addEventListener("load", function(){
             this.width = width;
             this.height = height;
 
-            this.rectArray = [];
+            this.candleArray = [];
             this.p = 0;
         }
         init() {
-            this.rectArray.push(new Rect(this));
+            this.candleArray.push(new Candle(this));
         }
         draw(context) {
-            this.rectArray.forEach(rect => {rect.draw(context)});
+            this.candleArray.forEach(rect => {rect.draw(context)});
         }
         easeOut() {
-            if (Math.floor(this.rectArray[0].opacity) > 0) {
-                this.rectArray.shift();
+            if (Math.floor(this.candleArray[0].opacity) > 0) {
+                this.candleArray.shift();
                 this.p -=1;
             } else {
-                this.rectArray[this.p].reverse = true;
+                this.candleArray[this.p].reverse = true;
                 this.p += 1;
             }
         }
         update() {
-            this.rectArray.forEach(rect => {rect.update()});
+            this.candleArray.forEach(rect => {rect.update()});
         }
     }
 
@@ -114,4 +114,7 @@ window.addEventListener("load", function(){
         },  1000/60);
     }
     animate();
+
+
+
 })
