@@ -1,6 +1,6 @@
 # Stock Candle Background Animation
 
-Randomly generates green or red stock candles with vertical movement animation.
+This project uses JavaScript to randomly draw green or red stock candles on the `<canvas>` HTML element.
 
 Add this line of HTML code to embed the background animation:
 
